@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useEffect,useState,useContext} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
-import StarsIcon from '@material-ui/icons/Stars';
+// import StarsIcon from '@material-ui/icons/Stars';
 import { AuthContext } from "../helpers/AuthContext";
 
 
@@ -96,11 +96,11 @@ const likeApost = (postId) => {
               </svg>
               comment</div>
             <div className='flex flex-col justify-end items-end mr-6'>
-            <StarsIcon 
+            {/* <StarsIcon 
                onClick={()=>{likeApost(value.id)}}
                
                className={
-                 likedPosts.includes(value.id) ? "text-gray-500" : "text-gray-100 animate-spin"}  />
+                 likedPosts.includes(value.id) ? "text-gray-500" : "text-gray-100 animate-spin"}  /> */}
                  <label>{`${value.Likes.length} likes`}</label>
             </div>
             </div>

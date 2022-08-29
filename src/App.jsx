@@ -20,7 +20,7 @@ function App() {
   });
 
 useEffect(() => {
-  axios.get("http://192.168.0.116:8000/auth/auth",{headers:{
+  axios.get("http://localhost:8000/auth/auth",{headers:{
     accessToken: localStorage.getItem('accessToken')
   }}).then((response) => {
     if (response.data.error){

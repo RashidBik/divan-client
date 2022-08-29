@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../helpers/AuthContext';
-import StarsIcon from '@material-ui/icons/Stars';
+// import StarsIcon from '@material-ui/icons/Stars';
 
 
 function Profile() {
@@ -93,11 +93,11 @@ function Profile() {
         <div onClick={()=>{navigate(`/posts${value.id}`)}}>comment</div>
         <div>
         <label>{value.Likes.length}</label>
-        <StarsIcon 
+        {/* <StarsIcon 
            onClick={()=>{likeApost(value.id)}}
            
            className={
-             likedPosts.includes(value.id) ? "text-red-800" : "text-red-200"}  />
+             likedPosts.includes(value.id) ? "text-red-800" : "text-red-200"}  /> */}
         </div>
         </div>
       </div>

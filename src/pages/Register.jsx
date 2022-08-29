@@ -17,6 +17,7 @@ function Register() {
         birthDate: "",
         phone: "",
     };
+
     const validationSchema = Yup.object().shape({
         username: Yup.string().min(3).max(16).required(),
         password: Yup.string().min(5).max(16).required(),
@@ -28,10 +29,11 @@ function Register() {
 const onSubmit = (data) => {
   // const fData = new FormData();
   // fData.append('file',file)
-    axios.post(`http://192.168.0.116:8000/auth`, data).then((response) => {
-       navigate("/login");  
-       console.log(response.data);
-    });
+  console.log(data, data.values)
+    // axios.post(`http://localhost:8000/auth`, data).then((response) => {
+    //    navigate("/login");  
+    //    console.log(response.data);
+    // });
 };
 
 // const onFileHandler = (event) =>{
@@ -54,8 +56,8 @@ const onSubmit = (data) => {
     </div>
     <div className='block mt-16 pt-16 bg-gray-900 p-6 border-t-2 border-gray-700 rounded-3xl shadow-xl shadow-gray-600'>
     <h1 className='text-center text-xl text-gray-300'>New Member</h1>
-      <Formik initialValues={initialValues} validationSchema={validationSchema} >
-        <Form>
+      <Formik onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema} >
+        <Form onSubmit={onSubmit}>
             <Field 
                 className='input'
                 type="text" 
@@ -115,7 +117,6 @@ const onSubmit = (data) => {
             <button 
             className='w-full bg-gray-700 rounded-3xl p-2 mt-3 hover:bg-gray-800 hover:border-l-2 hover:border-r-2 border-gray-700' 
             type="button"
-            onClick={onSubmit}
             >Register</button>
         </Form>
       </Formik>
