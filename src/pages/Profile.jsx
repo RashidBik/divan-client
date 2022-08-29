@@ -1,40 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 import LikeButton from "../components/LikeButton";
+import { getPostByUserId } from "../api/posts";
+import { getUsername } from "../api/account";
+import { likePost } from "../api/likes";
 // import StarsIcon from '@material-ui/icons/Stars';
 
 function Profile() {
   let { id } = useParams();
   const [myUsername, setMyUsername] = useState("");
   const [myPosts, setMyPosts] = useState([]);
-  const [listOfPosts, setListOfPosts] = useState([]);
-  const [likedPosts, setLikedPosts] = useState([]);
   const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
   const { authState } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/auth/basicinfo/${id}`).then((response) => {
-      // let res = ;
-      setMyUsername(response.data.username);
+    getUsername(id).then((data) => {
+      setMyUsername(data.username);
     });
-    axios.get(`http://localhost:8000/posts/byuserId/${id}`).then((response) => {
-      setMyPosts(response.data);
+
+    getPostByUserId(id).then((posts) => {
+      setMyPosts(posts);
     });
   }, [id, liked]);
 
-  const likeApost = (postId) => {
-    axios
-      .post(
-        "http://localhost:8000/likes",
-        { PostId: postId },
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-      )
-      .then((response) => {
-        setLiked(!liked);
-      });
+  const likeApost = async (postId) => {
+    await likePost(postId);
+    setLiked(!liked);
   };
 
   return (
@@ -43,7 +36,7 @@ function Profile() {
         <div className="flex flex-col w-full items-center p-2">
           <div className="h-40 w-40 rounded-full bg-red-900 mt-2"></div>
           <div className="text-2xl">
-            {authState.username === myUsername && (
+           {authState.username === myUsername && (
               <span
                 onClick={() => {
                   navigate("/ChangePswd");

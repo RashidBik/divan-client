@@ -6,10 +6,10 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import { AuthContext } from './helpers/AuthContext';
 import {useState, useEffect} from 'react';
-import axios from 'axios';
 import Error from './pages/Error'
 import Profile from './pages/Profile';
 import ChangePswd from './components/ChangePswd';
+import { getAuthState } from "./api/account";
 
 function App() {
  const navigate = useNavigate();
@@ -20,9 +20,7 @@ function App() {
   });
 
 useEffect(() => {
-  axios.get("http://localhost:8000/auth/auth",{headers:{
-    accessToken: localStorage.getItem('accessToken')
-  }}).then((response) => {
+  getAuthState().then((response) => {
     if (response.data.error){
         setAuthState({...authState, status: false});
       }else{
