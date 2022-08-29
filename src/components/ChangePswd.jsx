@@ -8,7 +8,7 @@ function ChangePswd() {
     const [newPassword, setNewPassword] = useState("");
 
 const changePassword = () => {
-    axios.put("http://192.168.0.116:8000/auth/changePswd",{
+    axios.put("http://localhost:8000/auth/changePswd",{
         oldPassword: oldPassword,
         newPassword: newPassword
         },{headers: {accessToken: localStorage.getItem("accessToken")}},)

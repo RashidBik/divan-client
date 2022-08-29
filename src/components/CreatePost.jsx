@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
 );
 
 const onSubmit = (data) => {
-  axios.post('http://192.168.0.116:8000/posts',data,{
+  axios.post('http://localhost:8000/posts',data,{
     headers:
       {accessToken: localStorage.getItem('accessToken')},
   })

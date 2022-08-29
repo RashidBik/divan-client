@@ -6,7 +6,13 @@ import {useNavigate} from 'react-router-dom';
 
 function Register() {
   // const [file, setFile] = useState();
-    
+    const [username, setUsername] = useState('test')
+    const [password, setPassword] = useState('test123')
+    const [fullname, setFullname] = useState('Test User')
+    const [email, setEmail] = useState('test@gmail.com')
+    const [birthDate, setBirthDate] = useState('2022/08/29')
+    const [phone, setPhone] = useState('+123456789')
+
     const navigate = useNavigate();
 
     const initialValues = {
@@ -26,14 +32,20 @@ function Register() {
         birthDate: Yup.string().min(12).max(24).required(),
         phone: Yup.string().min(10).max(16).required(),
       })
-const onSubmit = (data) => {
+
+ async function onSubmit(event) {
   // const fData = new FormData();
   // fData.append('file',file)
-  console.log(data, data.values)
-    // axios.post(`http://localhost:8000/auth`, data).then((response) => {
-    //    navigate("/login");  
-    //    console.log(response.data);
-    // });
+  // console.log(data, data.values)
+  event.preventDefault()
+  const data = {
+    username, email, password, phone, fullname, birthDate
+  }
+  console.log(data)
+    axios.post(`http://localhost:8000/auth`, data).then((response) => {
+       navigate("/login");  
+       console.log(response.data);
+    });
 };
 
 // const onFileHandler = (event) =>{
@@ -56,7 +68,7 @@ const onSubmit = (data) => {
     </div>
     <div className='block mt-16 pt-16 bg-gray-900 p-6 border-t-2 border-gray-700 rounded-3xl shadow-xl shadow-gray-600'>
     <h1 className='text-center text-xl text-gray-300'>New Member</h1>
-      <Formik onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema} >
+      <Formik initialValues={initialValues} validationSchema={validationSchema} >
         <Form onSubmit={onSubmit}>
             <Field 
                 className='input'
@@ -82,13 +94,13 @@ const onSubmit = (data) => {
             placeholder="Email"
             
             />
-            <Field
+            {/* <Field
             className='input'
             type="text"
             name="BirthDate"
             placeholder="Birth Date"
             
-            />
+            /> */}
             <Field
             className='input'
             type="text"
@@ -116,7 +128,7 @@ const onSubmit = (data) => {
             </div>
             <button 
             className='w-full bg-gray-700 rounded-3xl p-2 mt-3 hover:bg-gray-800 hover:border-l-2 hover:border-r-2 border-gray-700' 
-            type="button"
+            type="submit"
             >Register</button>
         </Form>
       </Formik>
