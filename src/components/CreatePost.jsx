@@ -3,6 +3,7 @@ import {Formik, Form, Field, ErrorMessage} from "formik";
 import axios from 'axios';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { createPost } from '../api/posts';
 
 function CreatePost() {
   let navigate = useNavigate();
@@ -25,10 +26,7 @@ const validationSchema = Yup.object().shape({
 );
 
 const onSubmit = (data) => {
-  axios.post('http://192.168.0.116:8000/posts',data,{
-    headers:
-      {accessToken: localStorage.getItem('accessToken')},
-  })
+  createPost(data)
   .then((response)=> {
     if (!response.data.error){ 
       navigate("/");

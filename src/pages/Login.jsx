@@ -2,6 +2,7 @@ import axios from 'axios';
 import {Link, useNavigate} from "react-router-dom";
 import React,{useState,useContext} from 'react';
 import { AuthContext } from '../helpers/AuthContext';
+import { login } from '../api/account';
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -9,9 +10,9 @@ function Login() {
   const {setAuthState} = useContext(AuthContext);
   let navigate = useNavigate(); 
 
-  const login = () => {
+  const onSubmit = () => {
     const data = {username: username, password: password};
-    axios.post("http://192.168.0.116:8000/auth/login", data)
+    login(data)
     .then((response) => { 
      if (response.data.error){
           alert(response.data.error);
@@ -66,7 +67,7 @@ function Login() {
       /><span className='text-gray-300'> Remember me</span>
       </div>
       <button className='w-full bg-gray-700 rounded-3xl p-2 mt-3 hover:bg-gray-700 hover:border-l-2 hover:border-r-2 border-gray-700'
-       onClick={login}>Login</button>
+       onClick={onSubmit}>Login</button>
        <div >
       <Link className='grid' to="/register"> <span className='text-right mt-3 text-gray-400 hover:text-gray-300'>
       Create Account </span></Link>
