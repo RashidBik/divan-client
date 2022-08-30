@@ -4,7 +4,6 @@ import axios from 'axios';
 import { AuthContext } from '../helpers/AuthContext';
 import StarsIcon from '@material-ui/icons/Stars';
 
-
 function Profile() {
   let {id} = useParams();
   const [myUsername, setMyUsername] = useState("");
@@ -30,7 +29,7 @@ function Profile() {
     axios.post('http://192.168.0.116:8000/likes',{PostId: postId},
     {headers: {accessToken: localStorage.getItem("accessToken")}}
     ).then((response)=> {
-    console.log(response.data);////////////////////
+    console.log(response.data);
       setListOfPosts(listOfPosts.map((post) => {
         if (post.id === postId) {
           if (response.data.liked) {
