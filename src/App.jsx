@@ -70,7 +70,7 @@ const logout = () => {
       </div>)} 
     
         <Routes>
-            <Route path="/" exact element={<Home />} />
+            <Route index="/" exact element={<Home />} />
             <Route path="/Profile/:id" exact element={<Profile />} />
             <Route path="/CreatePost" exact element={<CreatePost />} />
             <Route path="/Posts:id" exact element={<Post />} />
