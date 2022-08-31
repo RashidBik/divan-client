@@ -4,7 +4,7 @@ let instance= axios.create({
     headers: {
         accessToken: localStorage.getItem('accessToken')
     },
-    baseURL: 'http://localhost:8000'
+    baseURL: 'https://divan.onrender.com'
 })
 
 export default instance

@@ -15,49 +15,15 @@ function Home() {
     if (!localStorage.getItem("accessToken")) {
       navigate("/login");
     } else {
-     getAllPosts()
-        .then((posts) => {
-          setListOfPosts(posts.listOfPosts);
-          // console.log(posts);
-          setLikedPosts(
-            posts.likedPosts.map((like) => {
-              return like.PostId;
-            })
-          );
-        });
+      getAllPosts().then((posts) => {
+        setListOfPosts(posts.listOfPosts);
+      });
     }
   }, [navigate, liked]);
 
   const likeApost = async (postId) => {
-    await likePost(postId)
-    setLiked(!liked)
-      // .then((response) => {
-      //   console.log(response.data); ////////////////////
-      //   setListOfPosts(
-      //     listOfPosts.map((post) => {
-      //       if (post.id === postId) {
-      //         if (response.data.liked) {
-      //           return { ...post, Likes: [...post.Likes, 0] };
-      //         } else {
-      //           const likeArray = post.Likes;
-      //           likeArray.pop();
-      //           return { ...post, Likes: likeArray };
-      //         }
-      //       } else {
-      //         return post;
-      //       }
-      //     })
-      //   );
-      //   if (likedPosts.includes(postId)) {
-      //     setLikedPosts(
-      //       likedPosts.filter((id) => {
-      //         return id !== postId;
-      //       })
-      //     );
-      //   } else {
-      //     setLikedPosts([...likedPosts, postId]);
-      //   }
-      // });
+    await likePost(postId);
+    setLiked(!liked);
   };
 
   return (
@@ -81,7 +47,13 @@ function Home() {
         <div>
           {listOfPosts.map((value) => {
             return (
-              <PostCard showDelete={false} likeApost={likeApost} authState={authState} post={value} showComment={true}/>
+              <PostCard
+                showDelete={false}
+                likeApost={likeApost}
+                authState={authState}
+                post={value}
+                showComment={true}
+              />
             );
           })}
         </div>

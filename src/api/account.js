@@ -13,7 +13,7 @@ export function login(data) {
 }
 
 export function register(data) {
-    return axios.post('/auth/register', data)
+    return axios.post('/auth', data)
 }
 
 export function changePassword(oldPassword, newPassword) {
