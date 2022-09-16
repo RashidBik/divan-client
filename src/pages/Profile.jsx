@@ -67,11 +67,11 @@ function Profile() {
                 </div>
               </div>
               <div className="bg-gray-800 mt-8 text-gray-300">
-                <div className="bg-gray-800 text-center border-t border-gray-700 text-xl p-2">
+                <div className="bg-gray-800 text-center border-t border-gray-700 font-black">
                   {value.title}
                 </div>
                 <div
-                  className="break-all p-4 border-y border-gray-700 rounded-xl "
+                  className="break-all p-4 pt-0 "
                   onClick={() => {
                     navigate(`/posts${value.id}`);
                   }}
@@ -80,7 +80,7 @@ function Profile() {
                 </div>
               </div>
 
-              <div className="flex justify-between text-gray-400 p-[3px] mt-2">
+              <div className="flex justify-between text-gray-400 p-[3px] border-t border-gray-600 mt-2">
                 <div
                   onClick={() => {
                     navigate(`/posts${value.id}`);

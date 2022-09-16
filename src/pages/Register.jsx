@@ -34,9 +34,6 @@ function Register() {
   });
 
   async function onSubmit(event) {
-    // const fData = new FormData();
-    // fData.append('file',file)
-    // console.log(data, data.values)
     event.preventDefault();
     const data = {
       username,

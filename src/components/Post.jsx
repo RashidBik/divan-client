@@ -73,7 +73,7 @@ export function PostCard({
         </div>
         <div className="bg-gray-800 border-gray-700 mt-8">
           <div
-            className="bg-gray-800 border-gray-700 rounded-xl p-2 text-center text-xl"
+            className="text-center text-md font-black"
             onDoubleClick={() => {
               if (authState.username === post.username) {
                 editPost("title");
@@ -83,7 +83,7 @@ export function PostCard({
             {post.title}
           </div>
           <div
-            className="break-all p-4 border-t border-gray-700 border-b rounded-xl "
+            className="break-all p-4 pt-0"
             onDoubleClick={() => {
               if (authState.username === post.username) {
                 editPost("body");
@@ -94,7 +94,7 @@ export function PostCard({
           </div>
         </div>
 
-        <div className="flex justify-between mt-2">
+        <div className="flex justify-between border-t-[1px] border-gray-600">
           <div
             className="flex flex-col ml-6"
             onClick={() => {
@@ -102,18 +102,18 @@ export function PostCard({
             }}
           >
             {showComment && (
-              <>
+              <div className="flex cursor-pointer hover:text-[17px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-5 w-5 m-2 hover:w-6"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
                   <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
                   <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
                 </svg>
-                comment
-              </>
+                <div className="my-2">Comment</div>
+              </div>
             )}
           </div>
 
@@ -222,7 +222,7 @@ function Post() {
         <div>
           <div className="fixed flex gap-2 bottom-0 bg-gray-800 left-0 w-full p-4">
             <input
-              className="w-full text-white bg-gray-700 bg-opacity-50 hover:bg-opacity-100 focus:bg-opacity-100 outline-none rounded-xl p-2 text-gray-900"
+              className="w-full text-gray-100 bg-gray-700 bg-opacity-50 hover:bg-opacity-100 focus:bg-opacity-100 outline-none rounded-xl p-2 text-gray-900"
               type="text"
               value={newComment}
               placeholder="Comment..."
