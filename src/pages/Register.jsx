@@ -50,9 +50,6 @@ function Register() {
     });
   }
 
-  // const onFileHandler = (event) =>{
-  //   setFile(event.target.files[0]);
-  // }
   return (
     <div className="mx-auto w-80 mt-0 mb-60 h-96">
       <div className="relative flex justify-center">
@@ -159,14 +156,9 @@ function Register() {
               component="span"
             />
             <div className="w-full text-gray-300 rounded-3xl pl-4 mt-2">
-              {/* <input 
-                className="accent-red-800 bg-gray-700 border"
-                type="checkbox" 
-                name="privcy"  
-                 /> <span className='text-gray-300'> I accept your privicy policy </span> */}
             </div>
             <button
-              className="w-full bg-gray-700 rounded-3xl p-2 mt-3 hover:bg-gray-800 hover:border-l-2 hover:border-r-2 border-gray-700"
+              className="w-full text-gray-300 bg-gray-700 rounded-3xl p-2 mt-3 hover:bg-gray-800 hover:border-l-2 hover:border-r-2 border-gray-700 hover:font-black hover:text-gray-300"
               type="submit"
             >
               Register
@@ -174,7 +166,7 @@ function Register() {
           </Form>
         </Formik>
         <div className="grid">
-          <span className="text-[10px] leading-3 px-4 text-center mt-2 text-gray-500">
+          <span className="text-[10px] leading-3 px-4 text-center mt-2 text-gray-400">
             Plaese Try to accept our privcy policy its an important thing for
             our client security
           </span>
