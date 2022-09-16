@@ -32,7 +32,7 @@ function Home() {
       <div className="md:w-full md:col-span-3">
         <div className="flex flex-row justify-between items-baseline">
           <Link
-            className="bg-gray-700 p-2 sm:p-4 rounded-full"
+            className="bg-gray-700 p-2 sm:p-4 rounded-full overflow-hidden"
             to={`/Profile/${authState.id}`}
           >
             {authState.username}
