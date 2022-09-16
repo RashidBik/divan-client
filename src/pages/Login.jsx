@@ -57,10 +57,10 @@ function Login() {
       className='mt-3 accent-gray-800'
       /><span className='text-gray-300'> Remember me</span>
       </div>
-      <button className='w-full bg-gray-400 rounded-3xl p-2 mt-3 hover:bg-gray-700 hover:border-l-2 hover:border-r-2 border-gray-700'
+      <button className='w-full bg-gray-700 rounded-3xl p-2 mt-3 hover:bg-gray-700 hover:border-l-2 hover:border-r-2 border-gray-700 hover:font-black text-gray-300 hover:text-gray-200 hover:bg-gray-800'
        onClick={onSubmit}>Login</button>
        <div >
-      <Link className='grid' to="/register"> <span className='text-right mt-3 text-gray-400 hover:text-gray-300 hover:font-black'>
+      <Link className='grid' to="/register"> <span className='text-right mt-3 text-gray-400 hover:text-gray-300 hover:text-gray-200 hover:font-black'>
       Create Account </span></Link>
        </div>
     </div>
